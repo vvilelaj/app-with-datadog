@@ -1,0 +1,17 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP .NET Core service.
+version: '3.4'
+
+services:
+  vvjappwithdatadog:
+    image: vvjappwithdatadog
+    build:
+      context: .
+      dockerfile: src/webapi/Dockerfile
+    ports:
+      - 80
+  ddagent:
+    image: datadog/agent
+    environment: 
+      - DD_API_KEY=$DD_API_KEY_DEV
+      - DD_APM_ENABLED=true
+      - DD_APM_NON_LOCAL_TRAFFIC=true
