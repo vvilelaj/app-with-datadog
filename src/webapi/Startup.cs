@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Serilog;
 
 namespace VVJ.AppWithDataDog.WebApi
 {
@@ -35,6 +36,8 @@ namespace VVJ.AppWithDataDog.WebApi
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSerilogRequestLogging();
 
             app.UseHttpsRedirection();
 
